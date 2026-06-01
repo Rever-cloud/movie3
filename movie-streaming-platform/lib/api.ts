@@ -11,6 +11,7 @@ export interface Movie {
   release_date: string;
   vote_average: number;
   vote_count: number;
+  original_language?: string;
   genre_ids?: number[];
   genres?: Genre[];
   runtime?: number;
