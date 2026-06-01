@@ -1,11 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  typescript: {
-    ignoreBuildErrors: true,
-  },
   images: {
-    unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'streamflex-movies-api.up.railway.app',
+        pathname: '/**',
+      },
+    ],
   },
-}
+};
 
-export default nextConfig
+export default nextConfig;
