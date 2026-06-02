@@ -1,5 +1,5 @@
-#An0nOtF
-#StreamFlex movies
+// An0nOtF
+// StreamFlex movies
 // API Configuration
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://streamflex-movies-api.up.railway.app';
 
