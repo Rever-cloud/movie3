@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import useSWR from 'swr';
 import { ArrowLeft, Play, Plus, Check, Star, Calendar, Clock, Globe, X } from 'lucide-react';
-import { fetchMovieById, fetchSimilarMovies, Movie } from '@/lib/api';
+import { getMovieById, getSimilarMovies, Movie } from '@/lib/api';
 import { isInWatchlist, addToWatchlist, removeFromWatchlist } from '@/lib/watchlist';
 import { useToast } from '@/lib/context';
 import { MovieRow } from '@/components/movie-row';
@@ -26,12 +26,12 @@ export default function MovieDetailPage({ params }: { params: Promise<{ id: stri
 
   const { data: movie, isLoading, error } = useSWR(
     `movie-${id}`,
-    () => fetchMovieById(Number(id))
+    () => getMovieById(Number(id))
   );
 
   const { data: similarData, isLoading: similarLoading } = useSWR(
     movie ? `similar-${id}` : null,
-    () => fetchSimilarMovies(Number(id))
+    () => getSimilarMovies(Number(id))
   );
 
   useEffect(() => {
