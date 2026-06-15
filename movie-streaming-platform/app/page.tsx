@@ -1,15 +1,15 @@
 'use client';
 
 import useSWR from 'swr';
-import { getPopularMovies, getTrending, getPopularTv, Movie } from '@/lib/api';
+import { getPopularMovies, getTrendingMovies, Movie } from '@/lib/api';
 import { HeroBanner, HeroBannerSkeleton } from '@/components/hero-banner';
 import { MovieRow } from '@/components/movie-row';
 import { ContinueWatching } from '@/components/continue-watching';
 import { GenreFilter } from '@/components/genre-filter';
 
 export default function HomePage() {
-  const { data: trendingData, isLoading: trendingLoading } = useSWR('trending', getTrending);
-  const { data: popularData, isLoading: popularLoading } = useSWR('popular', getPopularTv);
+  const { data: trendingData, isLoading: trendingLoading } = useSWR('trending', getTrendingMovies);
+  const { data: popularData, isLoading: popularLoading } = useSWR('popular', getPopularMovies);
   const { data: moviesData, isLoading: moviesLoading } = useSWR('movies', getPopularMovies);
 
   const trending: Movie[] = trendingData?.results || [];
