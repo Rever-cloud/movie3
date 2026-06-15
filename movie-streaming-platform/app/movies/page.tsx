@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import useSWRInfinite from 'swr/infinite';
 import { Loader2, Film, Filter } from 'lucide-react';
-import { fetchMovies, Movie } from '@/lib/api';
+import { getPopularMovies, Movie } from '@/lib/api';
 import { MovieCard, MovieCardSkeleton } from '@/components/movie-card';
 
 const genres = [
@@ -41,7 +41,7 @@ function MoviesContent() {
     (key) => {
       const pageMatch = key.match(/page-(\d+)/);
       const page = pageMatch ? Number(pageMatch[1]) : 1;
-      return fetchMovies(page);
+      return getPopularMovies(page);
     },
     { revalidateFirstPage: false }
   );

@@ -2,11 +2,11 @@
 
 import useSWR from 'swr';
 import { TrendingUp, Loader2 } from 'lucide-react';
-import { fetchTrending, Movie } from '@/lib/api';
+import { getTrending, Movie } from '@/lib/api';
 import { MovieCard, MovieCardSkeleton } from '@/components/movie-card';
 
 export default function TrendingPage() {
-  const { data, isLoading, error } = useSWR('trending', fetchTrending);
+  const { data, isLoading, error } = useSWR('trending', getTrending);
 
   const movies: Movie[] = data?.results || [];
 
